@@ -49,9 +49,16 @@
     "react-dom": "^16.14.0"
   },
   "peerDependencies": {
+    "@material-ui/core": "4.x",
+    "@material-ui/icons": "4.x",
     "mirador": "3.x",
+    "prop-types": "15.x",
     "react": "16.x",
-    "react-dom": "16.x"
+    "react-dom": "16.x",
+    "react-i18next": "11.x",
+    "react-redux": "7.x",
+    "redux": "4.x",
+    "reselect": "4.x"
   },
   "engines": {
     "node": ">=16.0.0 <17.0.0",
