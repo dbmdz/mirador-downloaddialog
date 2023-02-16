@@ -1,12 +1,12 @@
 module.exports = {
-  type: 'react-component',
+  type: "react-component",
   npm: {
     esModules: true,
     umd: {
-      global: 'MiradorDownloadDialog',
+      global: "MiradorDownloadDialog",
       externals: {
-        react: 'React'
-      }
-    }
-  }
-}
+        react: "React",
+      },
+    },
+  },
+};
