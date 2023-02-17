@@ -1,7 +1,7 @@
 {
   "name": "mirador-downloaddialog",
   "version": "0.1.0",
-  "description": "mirador-downloaddialog React component",
+  "description": "Mirador 3 plugin to add a dialog containing download links",
   "keywords": [
     "iiif",
     "mirador",
