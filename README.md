@@ -3,9 +3,7 @@
 [![npm package][npm-badge]][npm]
 [![required Mirador version][mirador-badge]][mirador]
 
-A Mirador 3 plugin which adds a dialog for sharing links via mail or WhatsApp or to Facebook, Pinterest and Twitter.
-
-![Screenshot][screenshot]
+A Mirador 3 plugin which adds a dialog containing download links to the current canvas image in different sizes, it also renders links defined in the `seeAlso` section of the manifest.
 
 ## Installation
 
@@ -74,4 +72,3 @@ starting the work, so we can discuss if it's a fit.
 [mirador-badge]: https://img.shields.io/badge/Mirador-%E2%89%A53.3.0-blueviolet
 [npm]: https://www.npmjs.org/package/mirador-downloaddialog
 [npm-badge]: https://img.shields.io/npm/v/mirador-downloaddialog.png?style=flat-square
-[screenshot]: .docassets/screenshot.png
