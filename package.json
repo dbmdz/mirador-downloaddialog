@@ -10,7 +10,7 @@
     "react-component"
   ],
   "homepage": "",
-  "repository": "",
+  "repository": "https://github.com/dbmdz/mirador-downloaddialog",
   "license": "MIT",
   "author": "Matthias Lindinger",
   "main": "lib/index.js",
