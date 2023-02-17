@@ -12,7 +12,7 @@
   "homepage": "",
   "repository": "https://github.com/dbmdz/mirador-downloaddialog",
   "license": "MIT",
-  "author": "Matthias Lindinger",
+  "author": "Matthias Lindinger <matthias.lindinger@bsb-muenchen.de>",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
