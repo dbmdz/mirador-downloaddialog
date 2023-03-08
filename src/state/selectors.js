@@ -11,9 +11,9 @@ const defaultConfig = {
 /** Selector to get the plugin config for a given window */
 const getPluginConfig = createSelector(
   [getWindowConfig],
-  ({ downloadDialog }) => ({
+  ({ downloadDialog = {} }) => ({
     ...defaultConfig,
-    ...(downloadDialog ?? {}),
+    ...downloadDialog,
   })
 );
 
