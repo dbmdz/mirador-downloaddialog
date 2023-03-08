@@ -8,7 +8,7 @@ const defaultConfig = {
   enabled: true,
 };
 
-/** Selector to get options for a given window */
+/** Selector to get the plugin config for a given window */
 const getPluginConfig = createSelector(
   [getWindowConfig],
   ({ downloadDialog }) => ({

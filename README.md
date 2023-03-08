@@ -38,13 +38,13 @@ const miradorConfig = {
   window: {
     // ....
     downloadDialog: {
-      // Global options for all windows, see available settings below
+      // Global config for all windows, see available settings below
     },
   },
   windows: [{
     // ....
     downloadDialog: {
-      // Options for an individual window, see available settings below
+      // config for an individual window, see available settings below
     },
   }, // ...
 }
@@ -52,7 +52,7 @@ const miradorConfig = {
 
 You can view an example configuration in [demo/src/index.js][demo-cfg].
 
-The available configuration options are:
+The available settings are:
 
 - `dialogOpen`: If the share dialog is open. Boolean, defaults to `false`.
 - `enabled`: If the plugin is enabled. Boolean, defaults to `true`.
