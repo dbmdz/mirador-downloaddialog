@@ -18,19 +18,20 @@ import React from "react";
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
 
-const DownloadDialog = ({
-  canvasLabel,
-  config,
-  containerId,
-  infoResponse,
-  manifestUrl,
-  seeAlso,
-  t,
-  updateConfig,
-  visibleCanvases,
-  windowId,
-}) => {
+const DownloadDialog = (props) => {
   const theme = useTheme();
+  const {
+    canvasLabel,
+    config,
+    containerId,
+    infoResponse,
+    manifestUrl,
+    seeAlso,
+    t,
+    updateConfig,
+    visibleCanvases,
+    windowId,
+  } = props;
   const { dialogOpen, enabled } = config;
   if (!enabled || !dialogOpen) {
     return null;
@@ -64,6 +65,8 @@ const DownloadDialog = ({
             t={t}
           />
         ))}
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        {AdditionalComponent && <AdditionalComponent {...props} />}
         <DownloadDialogPluginArea windowId={windowId} />
         <Box sx={{ marginTop: "1rem" }}>
           <Card raised>
@@ -118,8 +121,12 @@ DownloadDialog.defaultProps = {
 };
 
 DownloadDialog.propTypes = {
+  canvases: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.string.isRequired })
+  ).isRequired,
   canvasLabel: PropTypes.func.isRequired,
   config: PropTypes.shape({
+    AdditionalComponent: PropTypes.elementType,
     dialogOpen: PropTypes.bool.isRequired,
     enabled: PropTypes.bool.isRequired,
   }).isRequired,

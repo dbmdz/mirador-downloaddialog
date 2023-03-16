@@ -1,6 +1,7 @@
 import { updateWindow } from "mirador/dist/es/src/state/actions";
 import { getContainerId } from "mirador/dist/es/src/state/selectors";
 import {
+  getCanvases,
   getCanvasLabel,
   getVisibleCanvases,
   selectInfoResponse,
@@ -42,6 +43,7 @@ export default [
         dispatch(updateWindow(windowId, { downloadDialog })),
     }),
     mapStateToProps: (state, { windowId }) => ({
+      canvases: getCanvases(state, { windowId }),
       canvasLabel: (canvasId) => getCanvasLabel(state, { canvasId, windowId }),
       config: getPluginConfig(state, { windowId }),
       containerId: getContainerId(state),

@@ -1,6 +1,9 @@
 import Mirador from "mirador/dist/es/src/index";
+import React from "react";
 
 import downloadDialogPlugin from "../../src";
+
+const Foobar = ({ windowId }) => <span>{windowId}</span>;
 
 const config = {
   catalog: [
@@ -27,6 +30,9 @@ const config = {
   windows: [
     {
       canvasIndex: 8,
+      downloadDialog: {
+        AdditionalComponent: Foobar,
+      },
       manifestId:
         "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00034024/manifest",
       view: "single",
