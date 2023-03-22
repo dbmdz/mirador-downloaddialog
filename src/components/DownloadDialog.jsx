@@ -8,6 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Link from "@material-ui/core/Link";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import { useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ns from "mirador/dist/es/src/config/css-ns";
 import ScrollIndicatedDialogContent from "mirador/dist/es/src/containers/ScrollIndicatedDialogContent";
@@ -29,6 +30,7 @@ const DownloadDialog = ({
   visibleCanvases,
   windowId,
 }) => {
+  const theme = useTheme();
   const { dialogOpen, enabled } = config;
   if (!enabled || !dialogOpen) {
     return null;
@@ -73,7 +75,10 @@ const DownloadDialog = ({
               </Typography>
               <List>
                 <ListItem dense>
-                  <Box fontFamily="sans-serif" fontSize="0.75rem">
+                  <Box
+                    fontFamily={theme.typography.fontFamily ?? "sans-serif"}
+                    fontSize="0.75rem"
+                  >
                     <Link href={manifestUrl} rel="noopener" target="_blank">
                       {t("iiifManifest")}
                     </Link>
@@ -83,7 +88,10 @@ const DownloadDialog = ({
                   .filter(({ format }) => format !== "text/html")
                   .map(({ label, value }) => (
                     <ListItem dense key={value}>
-                      <Box fontFamily="sans-serif" fontSize="0.75rem">
+                      <Box
+                        fontFamily={theme.typography.fontFamily ?? "sans-serif"}
+                        fontSize="0.75rem"
+                      >
                         <Link href={value} rel="noopener" target="_blank">
                           {label}
                         </Link>
