@@ -30,6 +30,7 @@ export default [
       config: getPluginConfig(state, { windowId }),
     }),
     mode: "add",
+    name: "DownloadButton",
     target: "WindowTopBarPluginArea",
   },
   {
@@ -52,6 +53,7 @@ export default [
       visibleCanvases: getVisibleCanvases(state, { windowId }),
     }),
     mode: "add",
+    name: "DownloadDialog",
     target: "Window",
   },
 ];
