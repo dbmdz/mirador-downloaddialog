@@ -20,6 +20,7 @@ import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
 
 const DownloadDialog = ({
   canvasLabel,
+  children,
   config,
   containerId,
   infoResponse,
@@ -65,6 +66,7 @@ const DownloadDialog = ({
           />
         ))}
         <DownloadDialogPluginArea windowId={windowId} />
+        {children}
         <Box sx={{ marginTop: "1rem" }}>
           <Card raised>
             <CardContent>
@@ -113,12 +115,14 @@ const DownloadDialog = ({
 };
 
 DownloadDialog.defaultProps = {
+  children: undefined,
   manifestUrl: undefined,
   seeAlso: [],
 };
 
 DownloadDialog.propTypes = {
   canvasLabel: PropTypes.func.isRequired,
+  children: PropTypes.element,
   config: PropTypes.shape({
     dialogOpen: PropTypes.bool.isRequired,
     enabled: PropTypes.bool.isRequired,
