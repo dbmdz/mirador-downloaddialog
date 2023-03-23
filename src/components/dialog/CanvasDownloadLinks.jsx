@@ -12,7 +12,7 @@ import ImageLink from "./ImageLink";
 const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
   <Card className="mb-3" raised>
     <CardContent>
-      <Typography component="h5" variant="h6">
+      <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
         <Box fontWeight="fontWeightBold" textTransform="none">{`${t(
           "image"
         )}: ${label}`}</Box>

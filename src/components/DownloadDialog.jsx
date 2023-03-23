@@ -70,7 +70,11 @@ const DownloadDialog = ({
         <Box sx={{ marginTop: "1rem" }}>
           <Card raised>
             <CardContent>
-              <Typography component="h5" variant="h6">
+              <Typography
+                component="h5"
+                style={{ textTransform: "none" }}
+                variant="h6"
+              >
                 <Box fontWeight="fontWeightBold" textTransform="none">
                   {t("otherDownloadOptions")}
                 </Box>
