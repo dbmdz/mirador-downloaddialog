@@ -57,3 +57,5 @@ export default [
     target: "Window",
   },
 ];
+
+export { DownloadDialog, getPluginConfig, translations };
