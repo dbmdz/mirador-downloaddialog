@@ -1,6 +1,6 @@
 {
   "name": "mirador-downloaddialog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Mirador 3 plugin to add a dialog containing download links",
   "keywords": [
     "iiif",
