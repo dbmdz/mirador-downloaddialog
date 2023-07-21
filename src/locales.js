@@ -17,4 +17,13 @@ export default {
     pixels: "pixels",
     showDownloadOptions: "Show download options",
   },
+  fr: {
+    close: "Fermer",
+    downloadOptions: "Options de téléchargement",
+    iiifManifest: "Manifeste IIIF",
+    image: "Image",
+    otherDownloadOptions: "Autres liens de téléchargement",
+    pixels: "pixels",
+    showDownloadOptions: "Afficher les options de téléchargement",
+  },
 };
