@@ -14,7 +14,7 @@ const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
     <CardContent>
       <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
         <Box fontWeight="fontWeightBold" textTransform="none">{`${t(
-          "image"
+          "image",
         )}: ${label}`}</Box>
       </Typography>
       <List>
@@ -31,7 +31,7 @@ const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
               return acc;
             },
             // this represents the full size
-            [{ height: canvas.getHeight(), width: canvas.getWidth() }]
+            [{ height: canvas.getHeight(), width: canvas.getWidth() }],
           )
           .map(({ height, width }) => (
             <ListItem dense key={`${height}x${width}`}>
@@ -63,7 +63,7 @@ CanvasDownloadLinks.propTypes = {
     PropTypes.shape({
       height: PropTypes.number.isRequired,
       width: PropTypes.number.isRequired,
-    })
+    }),
   ),
   t: PropTypes.func.isRequired,
 };

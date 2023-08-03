@@ -14,7 +14,7 @@ const getPluginConfig = createSelector(
   ({ downloadDialog = {} }) => ({
     ...defaultConfig,
     ...downloadDialog,
-  })
+  }),
 );
 
 export { getPluginConfig };

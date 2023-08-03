@@ -8,7 +8,7 @@ import DownloadDialogPluginArea from "../../components/dialog/DownloadDialogPlug
 const ComposedDownloadDialogPluginArea = compose(
   withTranslation(),
   connect(null, null),
-  withPlugins("DownloadDialogPluginArea")
+  withPlugins("DownloadDialogPluginArea"),
 )(DownloadDialogPluginArea);
 
 export default ComposedDownloadDialogPluginArea;

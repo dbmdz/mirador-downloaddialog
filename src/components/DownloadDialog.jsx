@@ -139,12 +139,12 @@ DownloadDialog.propTypes = {
       format: PropTypes.string,
       label: PropTypes.string,
       value: PropTypes.string,
-    })
+    }),
   ),
   t: PropTypes.func.isRequired,
   updateConfig: PropTypes.func.isRequired,
   visibleCanvases: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, index: PropTypes.number })
+    PropTypes.shape({ id: PropTypes.string, index: PropTypes.number }),
   ).isRequired,
   windowId: PropTypes.string.isRequired,
 };
