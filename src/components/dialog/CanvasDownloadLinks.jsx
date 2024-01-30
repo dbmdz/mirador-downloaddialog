@@ -58,7 +58,7 @@ CanvasDownloadLinks.propTypes = {
     getHeight: PropTypes.func.isRequired,
     getWidth: PropTypes.func.isRequired,
   }).isRequired,
-  label: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired,
+  label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   sizes: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.number.isRequired,

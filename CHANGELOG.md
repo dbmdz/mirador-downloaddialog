@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed typing
+
 ## [0.3.0](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/0.3.0) - 2023-07-21
 
 ### Added
