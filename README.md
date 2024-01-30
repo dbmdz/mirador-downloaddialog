@@ -63,11 +63,11 @@ There are currently two ways, if you want to extend the `DownloadDialog` compone
 
 ### With a plugin hook
 
-The plugin has a `PluginHook` that renders another plugin [next to the `CanvasDownloadLinks`](plugin-hook).
+The plugin has a `PluginHook` that renders another plugin [next to the `CanvasDownloadLinks`][plugin-hook].
 
 ### With the rendering of child components
 
-The `DownloadDialog` component renders `children` [next to the `CanvasDownloadLinks`](children).
+The `DownloadDialog` component renders `children` [next to the `CanvasDownloadLinks`][children].
 
 To extend the plugin in this way, you can proceed as follows:
 
@@ -82,7 +82,7 @@ To extend the plugin in this way, you can proceed as follows:
    );
    ```
    **Note:** `DownloadDialog` is imported from this plugin
-4. add `MyCustomDownloadDialog` to your own plugins' export array (be sure to define [the whole config](plugin-cfg) needed by this plugin)
+4. add `MyCustomDownloadDialog` to your own plugins' export array (be sure to define [the whole config][plugin-cfg] needed by this plugin)
 5. add the other components to your own plugins' export array:
    ```
    const otherComponents = downloadDialogComponents.filter(
