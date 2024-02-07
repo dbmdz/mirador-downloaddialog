@@ -9,7 +9,7 @@ import React from "react";
 
 import ImageLink from "./ImageLink";
 
-const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
+const CanvasDownloadLinks = ({ canvas, label, sizes, maxWidth, t }) => (
   <Card className="mb-3" raised>
     <CardContent>
       <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
@@ -20,18 +20,23 @@ const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
       <List>
         {sizes
           .sort((a, b) => b.width - a.width)
-          .slice(1)
           .reduce(
             (acc, { height, width }) => {
+              // Initialize the array with either the full size, or the first size that matches the max width
+              if (acc.length === 0) {
+                if (meetsSizeLimit(width, maxWidth)) {
+                  acc.push({ height, width });
+                }
+              // Once the array has been initalized, check if each subsequent size should be added
               // only take sizes, where the difference between the last taken width
               // and the current one is bigger than 500 pixels
-              if (acc[acc.length - 1].width - width >= 500) {
+              // and where the width doesn't exceed the max width, if set
+              } else if (meetsSizeLimit(width, maxWidth) && (acc[acc.length - 1].width - width >= 500)) {
                 acc.push({ height, width });
               }
+
               return acc;
-            },
-            // this represents the full size
-            [{ height: canvas.getHeight(), width: canvas.getWidth() }],
+            },[]
           )
           .map(({ height, width }) => (
             <ListItem dense key={`${height}x${width}`}>
@@ -47,6 +52,13 @@ const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
     </CardContent>
   </Card>
 );
+
+// function for checking if a max width has been set and if so, comparing it to a given width 
+const meetsSizeLimit = (width, maxWidth) => {
+  if (maxWidth && maxWidth != null) {
+    return width <= maxWidth;
+  } else return true;
+}
 
 CanvasDownloadLinks.defaultProps = {
   sizes: [],
@@ -65,6 +77,10 @@ CanvasDownloadLinks.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ),
+  sizeLimit: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+  }),
   t: PropTypes.func.isRequired,
 };
 

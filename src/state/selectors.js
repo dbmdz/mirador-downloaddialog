@@ -6,6 +6,8 @@ const defaultConfig = {
   dialogOpen: false,
   // Enable the plugin
   enabled: true,
+  // Set an optional size limit
+  maxWidth: null,
 };
 
 /** Selector to get the plugin config for a given window */

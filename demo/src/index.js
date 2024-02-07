@@ -23,6 +23,9 @@ const config = {
   id: "demo",
   window: {
     allowFullscreen: true,
+    downloadDialog: {
+      maxWidth: 2000,
+    }
   },
   windows: [
     {
