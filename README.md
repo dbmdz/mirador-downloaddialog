@@ -75,20 +75,34 @@ To extend the plugin in this way, you can proceed as follows:
 2. add this plugin as dependency
 3. add custom `children`:
    ```
+   import { DownloadDialog } from "mirador-downloaddialog";
+   ...
    const MyCustomDownloadDialog = (props) => (
      <DownloadDialog {...props}>
        <MyCustomChildComponent {...props} />
      </DownloadDialog>
    );
    ```
-   **Note:** `DownloadDialog` is imported from this plugin
-4. add `MyCustomDownloadDialog` to your own plugins' export array (be sure to define [the whole config][plugin-cfg] needed by this plugin)
-5. add the other components to your own plugins' export array:
+4. add `MyCustomDownloadDialog` and the rest of the components defined by `mirador-downloaddialog` to your own plugins' default export array:
    ```
    const otherComponents = downloadDialogComponents.filter(
      (c) => c.name !== "DownloadDialog"
    );
+
+   export default [
+    ...otherComponents,
+    {
+      component: MyCustomDownloadDialog,
+      config: {...},
+      mapDispatchToProps: {...},
+      mapStateToProps: {...},
+      mode: ...,
+      name: ...,
+      target: ...,
+    }
+   ]
    ```
+   **Note:** be sure to define [the whole config][plugin-cfg] needed by this plugin
 
 ## Contributing
 
