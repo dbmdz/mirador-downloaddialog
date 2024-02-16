@@ -13,9 +13,7 @@ const CanvasDownloadLinks = ({ canvas, label, sizes, t }) => (
   <Card className="mb-3" raised>
     <CardContent>
       <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
-        <Box fontWeight="fontWeightBold" textTransform="none">{`${t(
-          "image",
-        )}: ${label}`}</Box>
+        <Box fontWeight="fontWeightBold">{`${t("image")}: ${label}`}</Box>
       </Typography>
       <List>
         {sizes
