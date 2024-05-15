@@ -24,6 +24,7 @@ const config = {
   window: {
     allowFullscreen: true,
     downloadDialog: {
+      includeRenderings: true,
       maxWidth: 2000,
     }
   },

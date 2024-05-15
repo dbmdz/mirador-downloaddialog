@@ -25,6 +25,7 @@ const DownloadDialog = ({
   containerId,
   infoResponse,
   manifestUrl,
+  renderings,
   seeAlso,
   t,
   updateConfig,
@@ -32,7 +33,7 @@ const DownloadDialog = ({
   windowId,
 }) => {
   const theme = useTheme();
-  const { dialogOpen, enabled } = config;
+  const { dialogOpen, enabled, includeRenderings } = config;
   if (!enabled || !dialogOpen) {
     return null;
   }
@@ -105,6 +106,20 @@ const DownloadDialog = ({
                       </Box>
                     </ListItem>
                   ))}
+                  {includeRenderings && renderings
+                  .filter(({ format }) => format !== "text/html")
+                  .map(({ label, value }) => (
+                    <ListItem dense key={value}>
+                      <Box
+                        fontFamily={theme.typography.fontFamily ?? "sans-serif"}
+                        fontSize="0.75rem"
+                      >
+                        <Link href={value} rel="noopener" target="_blank">
+                          {label}
+                        </Link>
+                      </Box>
+                    </ListItem>
+                  ))}
               </List>
             </CardContent>
           </Card>
@@ -135,6 +150,13 @@ DownloadDialog.propTypes = {
   containerId: PropTypes.string.isRequired,
   infoResponse: PropTypes.func.isRequired,
   manifestUrl: PropTypes.string,
+  renderings: PropTypes.arrayOf(
+    PropTypes.shape({
+      format: PropTypes.string,
+      label: PropTypes.string,
+      value: PropTypes.string,
+    }),
+  ),
   seeAlso: PropTypes.arrayOf(
     PropTypes.shape({
       format: PropTypes.string,
