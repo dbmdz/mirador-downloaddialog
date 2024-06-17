@@ -59,6 +59,53 @@ The available settings are:
 - `maxWidth`: A maxium width in pixels. If set, links to images larger than this will not be shown. Integer, defaults to `null`.
 - `includeRenderings`: If the plugin shows links found in the renderings section of the manifest. Boolean, defaults to `false`.
 
+## Extending
+
+There are currently two ways, if you want to extend the `DownloadDialog` component.
+
+### With a plugin hook
+
+The plugin has a `PluginHook` that renders another plugin [next to the `CanvasDownloadLinks`][plugin-hook].
+
+### With the rendering of child components
+
+The `DownloadDialog` component renders `children` [next to the `CanvasDownloadLinks`][children].
+
+To extend the plugin in this way, you can proceed as follows:
+
+1. write your own plugin
+2. add this plugin as dependency
+3. add custom `children`:
+   ```
+   import { DownloadDialog } from "mirador-downloaddialog";
+   ...
+   const MyCustomDownloadDialog = (props) => (
+     <DownloadDialog {...props}>
+       <MyCustomChildComponent {...props} />
+     </DownloadDialog>
+   );
+   ```
+4. add `MyCustomDownloadDialog` and the rest of the components defined by `mirador-downloaddialog` to your own plugins' default export array:
+   ```
+   const otherComponents = downloadDialogComponents.filter(
+     (c) => c.name !== "DownloadDialog"
+   );
+
+   export default [
+    ...otherComponents,
+    {
+      component: MyCustomDownloadDialog,
+      config: {...},
+      mapDispatchToProps: {...},
+      mapStateToProps: {...},
+      mode: ...,
+      name: ...,
+      target: ...,
+    }
+   ]
+   ```
+   **Note:** be sure to define [the whole config][plugin-cfg] needed by this plugin
+
 ## Contributing
 
 Found a bug? The plugin is not working with your manifest? Want a new
@@ -71,9 +118,12 @@ starting the work, so we can discuss if it's a fit.
 
 **Note**: The package requires Node.js `16` and npm in major version `8`.
 
+[children]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.jsx#L69
 [demo-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/demo/src/index.js#L5-L35
 [mirador]: https://github.com/ProjectMirador/mirador/releases/tag/v3.3.0
 [mirador-badge]: https://img.shields.io/badge/Mirador-%E2%89%A53.3.0-blueviolet
 [npm]: https://www.npmjs.org/package/mirador-downloaddialog
 [npm-badge]: https://img.shields.io/npm/v/mirador-downloaddialog.png?style=flat-square
+[plugin-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/index.js#L37-L57
+[plugin-hook]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.jsx#L68
 [screenshot]: .docassets/screenshot.png

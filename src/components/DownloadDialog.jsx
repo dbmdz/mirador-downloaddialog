@@ -77,7 +77,7 @@ const DownloadDialog = ({
                 style={{ textTransform: "none" }}
                 variant="h6"
               >
-                <Box fontWeight="fontWeightBold" textTransform="none">
+                <Box fontWeight="fontWeightBold">
                   {t("otherDownloadOptions")}
                 </Box>
               </Typography>

@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
+## [0.3.2](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/0.3.2) - 2024-02-21
+
+### Fixed
+
+- Removed obsolete prop that caused a React warning
+
 ## [0.3.1](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/0.3.1) - 2024-01-30
 
 ### Fixed
