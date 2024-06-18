@@ -56,7 +56,7 @@ The available settings are:
 
 - `dialogOpen`: If the share dialog is open. Boolean, defaults to `false`.
 - `enabled`: If the plugin is enabled. Boolean, defaults to `true`.
-- `maxWidth`: A maxium width in pixels. If set, links to images larger than this will not be shown. Integer, defaults to `null`.
+- `maxWidth`: A maximum width in pixels. If set, links to images larger than this will not be shown. Integer, defaults to `null`.
 - `includeRenderings`: If the plugin shows links found in the renderings section of the manifest. Boolean, defaults to `false`.
 
 ## Extending

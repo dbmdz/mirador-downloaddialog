@@ -146,6 +146,8 @@ DownloadDialog.propTypes = {
   config: PropTypes.shape({
     dialogOpen: PropTypes.bool.isRequired,
     enabled: PropTypes.bool.isRequired,
+    includeRenderings: PropTypes.bool,
+    maxWidth: PropTypes.number,
   }).isRequired,
   containerId: PropTypes.string.isRequired,
   infoResponse: PropTypes.func.isRequired,

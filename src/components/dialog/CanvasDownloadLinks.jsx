@@ -9,7 +9,7 @@ import React from "react";
 
 import ImageLink from "./ImageLink";
 
-const CanvasDownloadLinks = ({ canvas, label, sizes, maxWidth, t }) => (
+const CanvasDownloadLinks = ({ canvas, label, maxWidth, sizes, t }) => (
   <Card className="mb-3" raised>
     <CardContent>
       <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
