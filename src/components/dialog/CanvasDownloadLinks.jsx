@@ -75,10 +75,7 @@ CanvasDownloadLinks.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ),
-  sizeLimit: PropTypes.shape({
-    height: PropTypes.number,
-    width: PropTypes.number,
-  }),
+  maxWidth: PropTypes.number,
   t: PropTypes.func.isRequired,
 };
 
