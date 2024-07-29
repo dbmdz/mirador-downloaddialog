@@ -25,7 +25,7 @@ const config = {
     allowFullscreen: true,
     downloadDialog: {
       includeRenderings: true,
-      maxWidth: 2000,
+      maxDownloadWidth: 1080,
     }
   },
   windows: [

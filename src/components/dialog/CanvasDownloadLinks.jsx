@@ -9,7 +9,7 @@ import React from "react";
 
 import ImageLink from "./ImageLink";
 
-const CanvasDownloadLinks = ({ canvas, label, maxWidth, sizes, t }) => (
+const CanvasDownloadLinks = ({ canvas, label, maxDownloadWidth, sizes, t }) => (
   <Card className="mb-3" raised>
     <CardContent>
       <Typography component="h5" style={{ textTransform: "none" }} variant="h6">
@@ -22,14 +22,18 @@ const CanvasDownloadLinks = ({ canvas, label, maxWidth, sizes, t }) => (
             (acc, { height, width }) => {
               // Initialize the array with either the full size, or the first size that matches the max width
               if (acc.length === 0) {
-                if (meetsSizeLimit(width, maxWidth)) {
+                if (meetsSizeLimit(width, maxDownloadWidth)) {
                   acc.push({ height, width });
+                  // If there is a size less than 500 pixels larger than the max width, initalize using max width instead
+                  // otherwise the first download size will be relatively small
+                } else if (width - maxDownloadWidth < 500) {
+                  acc.push({ height: calculateHeight(maxDownloadWidth, canvas), width: maxDownloadWidth })
                 }
               // Once the array has been initalized, check if each subsequent size should be added
               // only take sizes, where the difference between the last taken width
               // and the current one is bigger than 500 pixels
               // and where the width doesn't exceed the max width, if set
-              } else if (meetsSizeLimit(width, maxWidth) && (acc[acc.length - 1].width - width >= 500)) {
+              } else if (meetsSizeLimit(width, maxDownloadWidth) && (acc[acc.length - 1].width - width >= 500)) {
                 acc.push({ height, width });
               }
 
@@ -51,10 +55,16 @@ const CanvasDownloadLinks = ({ canvas, label, maxWidth, sizes, t }) => (
   </Card>
 );
 
+// function for calculating the image height given a width, and the full height and width of the canvas
+function calculateHeight(width, canvas) {
+  const aspectRatio = canvas.getWidth() / canvas.getHeight();
+  return Math.round(width / aspectRatio);
+}
+
 // function for checking if a max width has been set and if so, comparing it to a given width 
-const meetsSizeLimit = (width, maxWidth) => {
-  if (maxWidth && maxWidth != null) {
-    return width <= maxWidth;
+const meetsSizeLimit = (width, maxDownloadWidth) => {
+  if (maxDownloadWidth && maxDownloadWidth != null) {
+    return width <= maxDownloadWidth;
   } else return true;
 }
 
@@ -75,7 +85,7 @@ CanvasDownloadLinks.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ),
-  maxWidth: PropTypes.number,
+  maxDownloadWidth: PropTypes.number,
   t: PropTypes.func.isRequired,
 };
 

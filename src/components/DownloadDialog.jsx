@@ -63,7 +63,7 @@ const DownloadDialog = ({
             key={canvas.id}
             label={canvasLabel(canvas.id)}
             sizes={infoResponse(canvas.id).json?.sizes}
-            maxWidth={config.maxWidth}
+            maxDownloadWidth={config.maxDownloadWidth}
             t={t}
           />
         ))}
@@ -147,7 +147,7 @@ DownloadDialog.propTypes = {
     dialogOpen: PropTypes.bool.isRequired,
     enabled: PropTypes.bool.isRequired,
     includeRenderings: PropTypes.bool,
-    maxWidth: PropTypes.number,
+    maxDownloadWidth: PropTypes.number,
   }).isRequired,
   containerId: PropTypes.string.isRequired,
   infoResponse: PropTypes.func.isRequired,
