@@ -7,6 +7,7 @@ import {
 } from "mirador/dist/es/src/state/selectors/canvases";
 import {
   getManifestRelatedContent,
+  getManifestRenderings, 
   getManifestUrl,
 } from "mirador/dist/es/src/state/selectors/manifests";
 
@@ -50,6 +51,7 @@ export default [
         selectInfoResponse(state, { canvasId, windowId }) ?? {},
       manifestUrl: getManifestUrl(state, { windowId }),
       seeAlso: getManifestRelatedContent(state, { windowId }),
+      renderings: getManifestRenderings(state, { windowId }),
       visibleCanvases: getVisibleCanvases(state, { windowId }),
     }),
     mode: "add",
