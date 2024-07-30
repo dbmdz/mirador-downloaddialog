@@ -17,6 +17,7 @@ import React from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
+import OtherDownloadLinks from "./dialog/OtherDownloadLinks";
 
 const DownloadDialog = ({
   canvasLabel,
@@ -92,35 +93,9 @@ const DownloadDialog = ({
                     </Link>
                   </Box>
                 </ListItem>
-                {seeAlso
-                  .filter(({ format }) => format !== "text/html")
-                  .map(({ label, value }) => (
-                    <ListItem dense key={value}>
-                      <Box
-                        fontFamily={theme.typography.fontFamily ?? "sans-serif"}
-                        fontSize="0.75rem"
-                      >
-                        <Link href={value} rel="noopener" target="_blank">
-                          {label}
-                        </Link>
-                      </Box>
-                    </ListItem>
-                  ))}
-                  {includeRenderings && renderings
-                  .filter(({ format }) => format !== "text/html")
-                  .map(({ label, value }) => (
-                    <ListItem dense key={value}>
-                      <Box
-                        fontFamily={theme.typography.fontFamily ?? "sans-serif"}
-                        fontSize="0.75rem"
-                      >
-                        <Link href={value} rel="noopener" target="_blank">
-                          {label}
-                        </Link>
-                      </Box>
-                    </ListItem>
-                  ))}
-              </List>
+                <OtherDownloadLinks links={seeAlso} />
+                {includeRenderings && <OtherDownloadLinks links={renderings} />}
+            </List>
             </CardContent>
           </Card>
         </Box>
