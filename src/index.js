@@ -1,14 +1,12 @@
 import { updateWindow } from "mirador/dist/es/src/state/actions";
-import { getContainerId } from "mirador/dist/es/src/state/selectors";
 import {
   getCanvasLabel,
-  getVisibleCanvases,
-  selectInfoResponse,
-} from "mirador/dist/es/src/state/selectors/canvases";
-import {
+  getContainerId,
   getManifestRelatedContent,
   getManifestUrl,
-} from "mirador/dist/es/src/state/selectors/manifests";
+  getVisibleCanvases,
+  selectInfoResponse,
+} from "mirador/dist/es/src/state/selectors";
 
 import DownloadButton from "./components/DownloadButton";
 import DownloadDialog from "./components/DownloadDialog";
