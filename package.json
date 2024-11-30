@@ -49,8 +49,8 @@
     "react-dom": "^16.14.0"
   },
   "peerDependencies": {
-    "@material-ui/core": "4.x",
-    "@material-ui/icons": "4.x",
+    "@mui/material": "5.x",
+    "@mui/icons-material": "5.x",
     "mirador": "3.x",
     "prop-types": "15.x",
     "react": "16.x",
