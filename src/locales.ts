@@ -36,6 +36,15 @@ const translations: Record<string, Translations> = {
     pixels: "pixels",
     showDownloadOptions: "Afficher les options de téléchargement",
   },
+  hu: {
+    close: "Bezárás",
+    downloadOptions: "Letöltési lehetőségek",
+    iiifManifest: "IIIF manifest",
+    image: "Kiválasztott kép",
+    otherDownloadOptions: "További letöltési lehetőségek",
+    pixels: "pixel",
+    showDownloadOptions: "Letöltési lehetőségek",
+  },
 };
 
 export default translations;
