@@ -17,6 +17,7 @@ import React from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
+import OtherDownloadLinks from "./dialog/OtherDownloadLinks";
 
 const DownloadDialog = ({
   canvasLabel,
@@ -25,6 +26,7 @@ const DownloadDialog = ({
   containerId,
   infoResponse,
   manifestUrl,
+  renderings,
   seeAlso,
   t,
   updateConfig,
@@ -32,7 +34,7 @@ const DownloadDialog = ({
   windowId,
 }) => {
   const theme = useTheme();
-  const { dialogOpen, enabled } = config;
+  const { dialogOpen, enabled, includeRenderings } = config;
   if (!enabled || !dialogOpen) {
     return null;
   }
@@ -62,6 +64,7 @@ const DownloadDialog = ({
             key={canvas.id}
             label={canvasLabel(canvas.id)}
             sizes={infoResponse(canvas.id).json?.sizes}
+            maxDownloadWidth={config.maxDownloadWidth}
             t={t}
           />
         ))}
@@ -90,21 +93,9 @@ const DownloadDialog = ({
                     </Link>
                   </Box>
                 </ListItem>
-                {seeAlso
-                  .filter(({ format }) => format !== "text/html")
-                  .map(({ label, value }) => (
-                    <ListItem dense key={value}>
-                      <Box
-                        fontFamily={theme.typography.fontFamily ?? "sans-serif"}
-                        fontSize="0.75rem"
-                      >
-                        <Link href={value} rel="noopener" target="_blank">
-                          {label}
-                        </Link>
-                      </Box>
-                    </ListItem>
-                  ))}
-              </List>
+                <OtherDownloadLinks links={seeAlso} />
+                {includeRenderings && <OtherDownloadLinks links={renderings} />}
+            </List>
             </CardContent>
           </Card>
         </Box>
@@ -130,10 +121,19 @@ DownloadDialog.propTypes = {
   config: PropTypes.shape({
     dialogOpen: PropTypes.bool.isRequired,
     enabled: PropTypes.bool.isRequired,
+    includeRenderings: PropTypes.bool,
+    maxDownloadWidth: PropTypes.number,
   }).isRequired,
   containerId: PropTypes.string.isRequired,
   infoResponse: PropTypes.func.isRequired,
   manifestUrl: PropTypes.string,
+  renderings: PropTypes.arrayOf(
+    PropTypes.shape({
+      format: PropTypes.string,
+      label: PropTypes.string,
+      value: PropTypes.string,
+    }),
+  ),
   seeAlso: PropTypes.arrayOf(
     PropTypes.shape({
       format: PropTypes.string,
