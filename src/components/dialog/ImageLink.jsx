@@ -1,8 +1,7 @@
-import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
-import { useTheme } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
-import React from "react";
 
 const ImageLink = ({ height, linkTarget, t, width }) => {
   const theme = useTheme();
