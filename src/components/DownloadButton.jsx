@@ -1,7 +1,6 @@
-import DownloadIcon from "@material-ui/icons/VerticalAlignBottomSharp";
-import { MiradorMenuButton } from "mirador/dist/es/src/components/MiradorMenuButton";
+import DownloadIcon from "@mui/icons-material/VerticalAlignBottomSharp";
+import { MiradorMenuButton } from "mirador";
 import PropTypes from "prop-types";
-import React from "react";
 
 const DownloadButton = ({ config, containerId, t, updateConfig }) => {
   const { dialogOpen, enabled } = config;
