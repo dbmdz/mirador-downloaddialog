@@ -1,6 +1,5 @@
-import { PluginHook } from "mirador/dist/es/src/components/PluginHook";
-import React from "react";
+import { PluginHook } from "mirador";
 
-const DownloadDialogPluginArea = (props) => <PluginHook {...props} />; // eslint-disable-line react/jsx-props-no-spreading
+const DownloadDialogPluginArea = (props) => <PluginHook {...props} />;
 
 export default DownloadDialogPluginArea;
