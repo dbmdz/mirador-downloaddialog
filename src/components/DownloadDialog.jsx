@@ -1,19 +1,17 @@
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Link from "@material-ui/core/Link";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import { useTheme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import ns from "mirador/dist/es/src/config/css-ns";
-import ScrollIndicatedDialogContent from "mirador/dist/es/src/containers/ScrollIndicatedDialogContent";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogTitle from "@mui/material/DialogTitle";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { ScrollIndicatedDialogContent } from "mirador";
 import PropTypes from "prop-types";
-import React from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
@@ -43,14 +41,14 @@ const DownloadDialog = ({
     });
   return (
     <Dialog
-      container={document.querySelector(`#${containerId} .${ns("viewer")}`)}
+      container={document.querySelector(`#${containerId} .mirador-viewer`)}
       fullWidth
       maxWidth="xs"
       onClose={closeDialog}
       open={dialogOpen}
       scroll="paper"
     >
-      <DialogTitle disableTypography>
+      <DialogTitle>
         <Typography variant="h4">
           <Box fontWeight="fontWeightBold">{t("downloadOptions")}</Box>
         </Typography>
