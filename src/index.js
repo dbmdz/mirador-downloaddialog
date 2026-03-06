@@ -1,4 +1,3 @@
-import { updateWindow } from "mirador/dist/es/src/state/actions";
 import {
   getCanvasLabel,
   getContainerId,
@@ -6,7 +5,9 @@ import {
   getManifestUrl,
   getVisibleCanvases,
   selectInfoResponse,
-} from "mirador/dist/es/src/state/selectors";
+  updateWindow,
+} from "mirador";
+import { withTranslation } from "react-i18next";
 
 import DownloadButton from "./components/DownloadButton";
 import DownloadDialog from "./components/DownloadDialog";
@@ -15,7 +16,7 @@ import { getPluginConfig } from "./state/selectors";
 
 export default [
   {
-    component: DownloadButton,
+    component: withTranslation()(DownloadButton),
     config: {
       translations,
     },
@@ -32,7 +33,7 @@ export default [
     target: "WindowTopBarPluginArea",
   },
   {
-    component: DownloadDialog,
+    component: withTranslation()(DownloadDialog),
     config: {
       translations,
     },
