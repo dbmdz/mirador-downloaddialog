@@ -66,10 +66,6 @@
     "react": "19.x",
     "react-dom": "19.x"
   },
-  "overrides": {
-    "react": "$react",
-    "react-dom": "$react-dom"
-  },
   "engines": {
     "npm": ">=11.0.0"
   }
