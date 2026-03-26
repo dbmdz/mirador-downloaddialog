@@ -26,6 +26,9 @@ const pluginConfig = {
     },
   },
   plugins: [react()],
+  server: {
+    open: true,
+  },
 };
 
 const demoConfig = {
@@ -38,6 +41,9 @@ const demoConfig = {
     },
   },
   plugins: [react()],
+  server: {
+    open: true,
+  },
 };
 
 export default defineConfig(buildMode !== "demo" ? pluginConfig : demoConfig);

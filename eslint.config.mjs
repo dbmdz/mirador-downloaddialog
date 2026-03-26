@@ -14,7 +14,6 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
     languageOptions: {
       globals: {
         ...globals.browser,
