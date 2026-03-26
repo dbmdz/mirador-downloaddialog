@@ -22,9 +22,9 @@
   "scripts": {
     "build": "npm run build:demo && npm run build:plugin",
     "prebuild:demo": "rimraf demo/dist",
-    "build:demo": "tsc && BUILD_MODE=demo vite build",
+    "build:demo": "BUILD_MODE=demo vite build",
     "prebuild:plugin": "rimraf dist",
-    "build:plugin": "tsc && vite build",
+    "build:plugin": "vite build",
     "format": "eslint . --ext js,jsx,ts,tsx --fix --max-warnings 0 --report-unused-disable-directives",
     "lint": "eslint . --ext js,jsx,ts,tsx --max-warnings 0 --report-unused-disable-directives",
     "prepublishOnly": "npm run build",
