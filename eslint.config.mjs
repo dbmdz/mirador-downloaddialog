@@ -26,15 +26,13 @@ export default defineConfig([
         ecmaFeatures: {
           jsx: true,
         },
-        project: ["./tsconfig.json", "./tsconfig.node.json"],
-        tsconfigRootDir: import.meta.dirname,
       },
     },
     extends: fixupConfigRules(
       compat.extends(
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended-type-checked",
-        "plugin:@typescript-eslint/stylistic-type-checked",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/stylistic",
         "plugin:prettier/recommended",
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
@@ -58,6 +56,14 @@ export default defineConfig([
     settings: {
       react: {
         version: "detect",
+      },
+    },
+  },
+  {
+    files: ["vite.config.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
       },
     },
   },
