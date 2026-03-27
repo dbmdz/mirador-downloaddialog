@@ -9,17 +9,17 @@ import { Canvas } from "mirador";
 
 import ImageLink from "./ImageLink";
 
-type ImageSize = {
+interface ImageSize {
   height: number;
   width: number;
-};
+}
 
-type CanvasDownloadLinksProps = {
+interface CanvasDownloadLinksProps {
   canvas: Canvas;
   label: number | string;
   sizes?: ImageSize[];
   t: TFunction;
-};
+}
 
 const CanvasDownloadLinks = ({
   canvas,

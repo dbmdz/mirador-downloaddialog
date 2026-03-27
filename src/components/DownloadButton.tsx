@@ -1,15 +1,15 @@
 import DownloadIcon from "@mui/icons-material/VerticalAlignBottomSharp";
-import { MiradorMenuButton } from "mirador";
 import { TFunction } from "i18next";
+import { MiradorMenuButton } from "mirador";
 
 import { PluginConfig } from "../state/selectors";
 
-type DownloadButtonProps = {
+interface DownloadButtonProps {
   config: PluginConfig;
   containerId: string;
   t: TFunction;
   updateConfig: (config: PluginConfig) => void;
-};
+}
 
 const DownloadButton = ({
   config,

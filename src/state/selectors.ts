@@ -1,9 +1,9 @@
 import { getWindowConfig } from "mirador";
 
-type PluginConfig = {
+interface PluginConfig {
   dialogOpen: boolean;
   enabled: boolean;
-};
+}
 
 const defaultConfig: PluginConfig = {
   // Open the download dialog

@@ -14,7 +14,10 @@ declare module "mirador" {
     props: { canvasId: string; windowId: string },
   ): string | number | undefined;
 
-  export function getConfig(state: unknown): { id?: string; [key: string]: unknown };
+  export function getConfig(state: unknown): {
+    id?: string;
+    [key: string]: unknown;
+  };
 
   export function getManifestSeeAlso(
     state: unknown,
@@ -73,9 +76,9 @@ declare module "mirador" {
     dividers?: boolean;
   }>;
 
-  export function withPlugins<P extends Record<string, unknown> = Record<string, unknown>>(
-    targetName: string,
-  ): (component: ComponentType<P>) => ComponentType<P>;
+  export function withPlugins<
+    P extends Record<string, unknown> = Record<string, unknown>,
+  >(targetName: string): (component: ComponentType<P>) => ComponentType<P>;
 
   const Mirador: {
     viewer: (

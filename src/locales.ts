@@ -1,4 +1,4 @@
-type Translations = {
+interface Translations {
   close: string;
   downloadOptions: string;
   iiifManifest: string;
@@ -6,7 +6,7 @@ type Translations = {
   otherDownloadOptions: string;
   pixels: string;
   showDownloadOptions: string;
-};
+}
 
 const translations: Record<string, Translations> = {
   de: {

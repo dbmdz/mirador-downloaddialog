@@ -4,7 +4,9 @@ import { withTranslation } from "react-i18next";
 
 import DownloadDialogPluginArea from "../../components/dialog/DownloadDialogPluginArea";
 
-type Props = { windowId: string };
+interface Props {
+  windowId: string;
+}
 
 export default withTranslation()(
   withPlugins("DownloadDialogPluginArea")(DownloadDialogPluginArea),

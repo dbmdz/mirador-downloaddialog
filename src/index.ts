@@ -13,10 +13,10 @@ import { withTranslation } from "react-i18next";
 import DownloadButton from "./components/DownloadButton";
 import DownloadDialog from "./components/DownloadDialog";
 import translations from "./locales";
-import { getPluginConfig } from "./state/selectors";
 import type { PluginConfig } from "./state/selectors";
+import { getPluginConfig } from "./state/selectors";
 
-type MiradorPlugin = {
+interface MiradorPlugin {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: ComponentType<any>;
   config?: Record<string, unknown>;
@@ -31,7 +31,7 @@ type MiradorPlugin = {
   mode: string;
   name: string;
   target: string;
-};
+}
 
 const plugins: MiradorPlugin[] = [
   {

@@ -10,8 +10,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { ScrollIndicatedDialogContent } from "mirador";
 import { TFunction } from "i18next";
+import { ScrollIndicatedDialogContent } from "mirador";
 import { Canvas } from "mirador";
 import { ReactElement } from "react";
 
@@ -19,25 +19,27 @@ import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginA
 import { PluginConfig } from "../state/selectors";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
 
-type SeeAlsoEntry = {
+interface SeeAlsoEntry {
   format?: string;
   label?: string;
   value?: string;
-};
+}
 
-type DownloadDialogProps = {
+interface DownloadDialogProps {
   canvasLabel: (canvasId: string) => string;
   children?: ReactElement;
   config: PluginConfig;
   containerId: string;
-  infoResponse: (canvasId: string) => { json?: { sizes?: { height: number; width: number }[] } };
+  infoResponse: (canvasId: string) => {
+    json?: { sizes?: { height: number; width: number }[] };
+  };
   manifestUrl?: string;
   seeAlso?: SeeAlsoEntry[];
   t: TFunction;
   updateConfig: (config: PluginConfig) => void;
   visibleCanvases: Canvas[];
   windowId: string;
-};
+}
 
 const DownloadDialog = ({
   canvasLabel,
