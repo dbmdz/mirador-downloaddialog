@@ -11,10 +11,33 @@ import ListItem from "@mui/material/ListItem";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { ScrollIndicatedDialogContent } from "mirador";
-import PropTypes from "prop-types";
+import { TFunction } from "i18next";
+import { Canvas } from "mirador";
+import { ReactElement } from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
+import { PluginConfig } from "../state/selectors";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
+
+type SeeAlsoEntry = {
+  format?: string;
+  label?: string;
+  value?: string;
+};
+
+type DownloadDialogProps = {
+  canvasLabel: (canvasId: string) => string;
+  children?: ReactElement;
+  config: PluginConfig;
+  containerId: string;
+  infoResponse: (canvasId: string) => { json?: { sizes?: { height: number; width: number }[] } };
+  manifestUrl?: string;
+  seeAlso?: SeeAlsoEntry[];
+  t: TFunction;
+  updateConfig: (config: PluginConfig) => void;
+  visibleCanvases: Canvas[];
+  windowId: string;
+};
 
 const DownloadDialog = ({
   canvasLabel,
@@ -23,12 +46,12 @@ const DownloadDialog = ({
   containerId,
   infoResponse,
   manifestUrl,
-  seeAlso,
+  seeAlso = [],
   t,
   updateConfig,
   visibleCanvases,
   windowId,
-}) => {
+}: DownloadDialogProps) => {
   const theme = useTheme();
   const { dialogOpen, enabled } = config;
   if (!enabled || !dialogOpen) {
@@ -114,37 +137,6 @@ const DownloadDialog = ({
       </DialogActions>
     </Dialog>
   );
-};
-
-DownloadDialog.defaultProps = {
-  children: undefined,
-  manifestUrl: undefined,
-  seeAlso: [],
-};
-
-DownloadDialog.propTypes = {
-  canvasLabel: PropTypes.func.isRequired,
-  children: PropTypes.element,
-  config: PropTypes.shape({
-    dialogOpen: PropTypes.bool.isRequired,
-    enabled: PropTypes.bool.isRequired,
-  }).isRequired,
-  containerId: PropTypes.string.isRequired,
-  infoResponse: PropTypes.func.isRequired,
-  manifestUrl: PropTypes.string,
-  seeAlso: PropTypes.arrayOf(
-    PropTypes.shape({
-      format: PropTypes.string,
-      label: PropTypes.string,
-      value: PropTypes.string,
-    }),
-  ),
-  t: PropTypes.func.isRequired,
-  updateConfig: PropTypes.func.isRequired,
-  visibleCanvases: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, index: PropTypes.number }),
-  ).isRequired,
-  windowId: PropTypes.string.isRequired,
 };
 
 export default DownloadDialog;
