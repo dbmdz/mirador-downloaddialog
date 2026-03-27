@@ -10,4 +10,4 @@ interface Props {
 
 export default withTranslation()(
   withPlugins("DownloadDialogPluginArea")(DownloadDialogPluginArea),
-) as ComponentType<Props>;
+) as unknown as ComponentType<Props>;
