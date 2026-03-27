@@ -1,4 +1,14 @@
-export default {
+type Translations = {
+  close: string;
+  downloadOptions: string;
+  iiifManifest: string;
+  image: string;
+  otherDownloadOptions: string;
+  pixels: string;
+  showDownloadOptions: string;
+};
+
+const translations: Record<string, Translations> = {
   de: {
     close: "Schließen",
     downloadOptions: "Download-Optionen",
@@ -27,3 +37,5 @@ export default {
     showDownloadOptions: "Afficher les options de téléchargement",
   },
 };
+
+export default translations;
