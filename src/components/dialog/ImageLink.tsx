@@ -1,9 +1,16 @@
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { useTheme } from "@mui/material/styles";
-import PropTypes from "prop-types";
+import { TFunction } from "i18next";
 
-const ImageLink = ({ height, linkTarget, t, width }) => {
+type ImageLinkProps = {
+  height: number;
+  linkTarget: string;
+  t: TFunction;
+  width: number;
+};
+
+const ImageLink = ({ height, linkTarget, t, width }: ImageLinkProps) => {
   const theme = useTheme();
   return (
     <Box
@@ -16,13 +23,6 @@ const ImageLink = ({ height, linkTarget, t, width }) => {
       </Link>
     </Box>
   );
-};
-
-ImageLink.propTypes = {
-  height: PropTypes.number.isRequired,
-  linkTarget: PropTypes.string.isRequired,
-  t: PropTypes.func.isRequired,
-  width: PropTypes.number.isRequired,
 };
 
 export default ImageLink;
