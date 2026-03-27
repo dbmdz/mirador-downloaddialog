@@ -1,20 +1,21 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { defineConfig } from "vite";
+import { defineConfig, UserConfig } from "vite";
+import dts from "vite-plugin-dts";
 
 const buildMode = process.env.BUILD_MODE ?? "plugin";
 
-const pluginConfig = {
+const pluginConfig: UserConfig = {
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, "src/index.js"),
+      entry: resolve(__dirname, "src/index.ts"),
       formats: ["es"],
     },
     rollupOptions: {
       external: [
         /^@emotion\/(react|styled)/,
-        /^@mui\/(material|icons-material|system)/,
+        /^@mui\/(material|system)/,
         "mirador",
         "react",
         "react-dom",
@@ -25,13 +26,13 @@ const pluginConfig = {
       },
     },
   },
-  plugins: [react()],
+  plugins: [react(), dts({ include: ["src"], exclude: "src/demo.ts" })],
   server: {
     open: true,
   },
 };
 
-const demoConfig = {
+const demoConfig: UserConfig = {
   build: {
     outDir: resolve(__dirname, "demo/dist"),
     rollupOptions: {
