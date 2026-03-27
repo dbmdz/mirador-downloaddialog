@@ -16,6 +16,7 @@
   "license": "MIT",
   "author": "Matthias Lindinger <matthias.lindinger@bsb-muenchen.de>",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
