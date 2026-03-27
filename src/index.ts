@@ -1,31 +1,53 @@
 import {
   getCanvasLabel,
-  getContainerId,
-  getManifestRelatedContent,
+  getConfig,
+  getManifestSeeAlso,
   getManifestUrl,
   getVisibleCanvases,
   selectInfoResponse,
   updateWindow,
 } from "mirador";
+import { ComponentType } from "react";
 import { withTranslation } from "react-i18next";
 
 import DownloadButton from "./components/DownloadButton";
 import DownloadDialog from "./components/DownloadDialog";
 import translations from "./locales";
 import { getPluginConfig } from "./state/selectors";
+import type { PluginConfig } from "./state/selectors";
 
-export default [
+type MiradorPlugin = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: ComponentType<any>;
+  config?: Record<string, unknown>;
+  mapDispatchToProps?: (
+    dispatch: (action: unknown) => void,
+    ownProps: { windowId: string },
+  ) => Record<string, unknown>;
+  mapStateToProps?: (
+    state: unknown,
+    ownProps: { windowId: string },
+  ) => Record<string, unknown>;
+  mode: string;
+  name: string;
+  target: string;
+};
+
+const plugins: MiradorPlugin[] = [
   {
     component: withTranslation()(DownloadButton),
     config: {
       translations,
     },
-    mapDispatchToProps: (dispatch, { windowId }) => ({
-      updateConfig: (downloadDialog) =>
+    mapDispatchToProps: (
+      dispatch: (action: unknown) => void,
+      { windowId }: { windowId: string },
+    ) => ({
+      updateConfig: (downloadDialog: Partial<PluginConfig>) =>
         dispatch(updateWindow(windowId, { downloadDialog })),
     }),
-    mapStateToProps: (state, { windowId }) => ({
-      containerId: getContainerId(state),
+    mapStateToProps: (state: unknown, { windowId }: { windowId: string }) => ({
+      containerId: getConfig(state).id,
       config: getPluginConfig(state, { windowId }),
     }),
     mode: "add",
@@ -37,18 +59,22 @@ export default [
     config: {
       translations,
     },
-    mapDispatchToProps: (dispatch, { windowId }) => ({
-      updateConfig: (downloadDialog) =>
+    mapDispatchToProps: (
+      dispatch: (action: unknown) => void,
+      { windowId }: { windowId: string },
+    ) => ({
+      updateConfig: (downloadDialog: Partial<PluginConfig>) =>
         dispatch(updateWindow(windowId, { downloadDialog })),
     }),
-    mapStateToProps: (state, { windowId }) => ({
-      canvasLabel: (canvasId) => getCanvasLabel(state, { canvasId, windowId }),
+    mapStateToProps: (state: unknown, { windowId }: { windowId: string }) => ({
+      canvasLabel: (canvasId: string) =>
+        getCanvasLabel(state, { canvasId, windowId }),
       config: getPluginConfig(state, { windowId }),
-      containerId: getContainerId(state),
-      infoResponse: (canvasId) =>
+      containerId: getConfig(state).id,
+      infoResponse: (canvasId: string) =>
         selectInfoResponse(state, { canvasId, windowId }) ?? {},
       manifestUrl: getManifestUrl(state, { windowId }),
-      seeAlso: getManifestRelatedContent(state, { windowId }),
+      seeAlso: getManifestSeeAlso(state, { windowId }),
       visibleCanvases: getVisibleCanvases(state, { windowId }),
     }),
     mode: "add",
@@ -57,4 +83,5 @@ export default [
   },
 ];
 
+export default plugins;
 export { DownloadDialog, getPluginConfig, translations };
