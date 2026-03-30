@@ -1,3 +1,5 @@
+/// <reference path="./mirador.d.ts" />
+
 import {
   getCanvasLabel,
   getConfig,
