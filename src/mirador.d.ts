@@ -1,6 +1,11 @@
 declare module "mirador" {
   import { ComponentType, ReactElement, ReactNode } from "react";
 
+  export interface ImageSize {
+    height: number;
+    width: number;
+  }
+
   export interface Canvas {
     id: string;
     index?: number;
@@ -42,7 +47,7 @@ declare module "mirador" {
   export function selectInfoResponse(
     state: unknown,
     props: { canvasId?: string; infoId?: string; windowId?: string },
-  ): { json?: { sizes?: { height: number; width: number }[] } } | undefined;
+  ): { json?: { sizes?: ImageSize[] } } | undefined;
 
   export function updateWindow(
     id: string,

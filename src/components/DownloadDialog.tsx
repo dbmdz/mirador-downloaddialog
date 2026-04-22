@@ -11,8 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { TFunction } from "i18next";
-import { ScrollIndicatedDialogContent } from "mirador";
-import { Canvas } from "mirador";
+import { Canvas, ImageSize, ScrollIndicatedDialogContent } from "mirador";
 import { ReactElement } from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
@@ -30,9 +29,7 @@ interface DownloadDialogProps {
   children?: ReactElement;
   config: PluginConfig;
   containerId: string;
-  infoResponse: (canvasId: string) => {
-    json?: { sizes?: { height: number; width: number }[] };
-  };
+  infoResponse: (canvasId: string) => { json?: { sizes?: ImageSize[] } };
   manifestUrl?: string;
   seeAlso?: SeeAlsoEntry[];
   t: TFunction;

@@ -5,14 +5,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import { TFunction } from "i18next";
-import { Canvas } from "mirador";
+import { Canvas, ImageSize } from "mirador";
 
 import ImageLink from "./ImageLink";
-
-interface ImageSize {
-  height: number;
-  width: number;
-}
 
 interface CanvasDownloadLinksProps {
   canvas: Canvas;
