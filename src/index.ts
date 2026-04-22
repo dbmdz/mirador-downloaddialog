@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./mirador.d.ts" />
 
 import {
@@ -87,3 +88,4 @@ const plugins: MiradorPlugin[] = [
 
 export default plugins;
 export { DownloadDialog, getPluginConfig, translations };
+export type { PluginConfig } from "./state/selectors";
