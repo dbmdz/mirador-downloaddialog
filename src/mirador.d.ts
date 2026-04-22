@@ -80,11 +80,8 @@ declare module "mirador" {
     P extends Record<string, unknown> = Record<string, unknown>,
   >(targetName: string): (component: ComponentType<P>) => ComponentType<P>;
 
-  const Mirador: {
-    viewer: (
-      config: Record<string, unknown>,
-      pluginsOrStruct?: unknown[] | { plugins: unknown[] },
-    ) => unknown;
-  };
-  export default Mirador;
+  export function viewer(
+    config: Record<string, unknown>,
+    plugins?: unknown[],
+  ): void;
 }
