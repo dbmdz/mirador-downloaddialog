@@ -3,7 +3,7 @@
 [![npm package][npm-badge]][npm]
 [![required Mirador version][mirador-badge]][mirador]
 
-A Mirador 3 plugin which adds a dialog containing download links to the current canvas image in different sizes, it also renders links defined in the `seeAlso` section of the manifest.
+A Mirador 4 plugin which adds a dialog containing download links to the current canvas image in different sizes, it also renders links defined in the `seeAlso` section of the manifest.
 
 ![Screenshot][screenshot]
 
@@ -14,14 +14,14 @@ To include the plugin in your Mirador installation, you need to install it
 from npm with `npm install mirador-downloaddialog`, import it into your project
 and pass it to Mirador when you instantiate the viewer:
 
-```javascript
-import Mirador from 'mirador/dist/es/src/index';
-import downloadDialogPlugin from 'mirador-downloaddialog/es';
+```typescript
+import Mirador from 'mirador';
+import downloadDialogPlugin from 'mirador-downloaddialog';
 
 const miradorConfig = {
   // Your Mirador configuration
-}
-Mirador.viewer(config, [...downloadDialogPlugin]);
+};
+Mirador.viewer(miradorConfig, [...downloadDialogPlugin]);
 ```
 
 ## Configuration
@@ -33,7 +33,7 @@ For global configuration add the `downloadDialog` entry to the top-level
 `window` configuration (globally for all windows) or to the individual window
 object:
 
-```javascript
+```typescript
 const miradorConfig = {
   window: {
     // ....
@@ -46,11 +46,11 @@ const miradorConfig = {
     downloadDialog: {
       // config for an individual window, see available settings below
     },
-  }, // ...
-}
+  }], // ...
+};
 ```
 
-You can view an example configuration in [demo/src/index.js][demo-cfg].
+You can view an example configuration in [src/demo.ts][demo-cfg].
 
 The available settings are:
 
@@ -74,9 +74,9 @@ To extend the plugin in this way, you can proceed as follows:
 1. write your own plugin
 2. add this plugin as dependency
 3. add custom `children`:
-   ```
+   ```tsx
    import { DownloadDialog } from "mirador-downloaddialog";
-   ...
+   // ...
    const MyCustomDownloadDialog = (props) => (
      <DownloadDialog {...props}>
        <MyCustomChildComponent {...props} />
@@ -84,7 +84,7 @@ To extend the plugin in this way, you can proceed as follows:
    );
    ```
 4. add `MyCustomDownloadDialog` and the rest of the components defined by `mirador-downloaddialog` to your own plugins' default export array:
-   ```
+   ```typescript
    const otherComponents = downloadDialogComponents.filter(
      (c) => c.name !== "DownloadDialog"
    );
@@ -100,7 +100,7 @@ To extend the plugin in this way, you can proceed as follows:
       name: ...,
       target: ...,
     }
-   ]
+   ];
    ```
    **Note:** be sure to define [the whole config][plugin-cfg] needed by this plugin
 
@@ -114,14 +114,14 @@ contributions :-)
 For larger changes/features, it's usually wise to open an issue before
 starting the work, so we can discuss if it's a fit.
 
-**Note**: The package requires Node.js `16` and npm in major version `8`.
+**Note**: The package requires Node.js `24` and npm >= `11`.
 
-[children]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.jsx#L69
-[demo-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/demo/src/index.js#L5-L35
-[mirador]: https://github.com/ProjectMirador/mirador/releases/tag/v3.3.0
-[mirador-badge]: https://img.shields.io/badge/Mirador-%E2%89%A53.3.0-blueviolet
+[children]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L91
+[demo-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/demo.ts
+[mirador]: https://github.com/ProjectMirador/mirador/releases/tag/v4.0.0
+[mirador-badge]: https://img.shields.io/badge/Mirador-4.x-blueviolet
 [npm]: https://www.npmjs.org/package/mirador-downloaddialog
 [npm-badge]: https://img.shields.io/npm/v/mirador-downloaddialog.png?style=flat-square
-[plugin-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/index.js#L37-L57
-[plugin-hook]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.jsx#L68
+[plugin-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/index.ts#L39
+[plugin-hook]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L90
 [screenshot]: .docassets/screenshot.png
