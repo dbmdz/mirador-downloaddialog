@@ -1,22 +1,42 @@
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Link from "@material-ui/core/Link";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import { useTheme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import ns from "mirador/dist/es/src/config/css-ns";
-import ScrollIndicatedDialogContent from "mirador/dist/es/src/containers/ScrollIndicatedDialogContent";
-import PropTypes from "prop-types";
-import React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogTitle from "@mui/material/DialogTitle";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { TFunction } from "i18next";
+import { Canvas, ImageSize, ScrollIndicatedDialogContent } from "mirador";
+import { ReactElement } from "react";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
+import { PluginConfig } from "../state/selectors";
 import CanvasDownloadLinks from "./dialog/CanvasDownloadLinks";
+
+interface SeeAlsoEntry {
+  format?: string;
+  label?: string;
+  value?: string;
+}
+
+interface DownloadDialogProps {
+  canvasLabel: (canvasId: string) => string;
+  children?: ReactElement;
+  config: PluginConfig;
+  containerId: string;
+  infoResponse: (canvasId: string) => { json?: { sizes?: ImageSize[] } };
+  manifestUrl?: string;
+  seeAlso?: SeeAlsoEntry[];
+  t: TFunction;
+  updateConfig: (config: PluginConfig) => void;
+  visibleCanvases: Canvas[];
+  windowId: string;
+}
 
 const DownloadDialog = ({
   canvasLabel,
@@ -25,12 +45,12 @@ const DownloadDialog = ({
   containerId,
   infoResponse,
   manifestUrl,
-  seeAlso,
+  seeAlso = [],
   t,
   updateConfig,
   visibleCanvases,
   windowId,
-}) => {
+}: DownloadDialogProps) => {
   const theme = useTheme();
   const { dialogOpen, enabled } = config;
   if (!enabled || !dialogOpen) {
@@ -43,14 +63,16 @@ const DownloadDialog = ({
     });
   return (
     <Dialog
-      container={document.querySelector(`#${containerId} .${ns("viewer")}`)}
+      // FIXME: .mirador-viewer is hardcoded because css-ns is not part of Mirador 4's public API.
+      // Replace with ns("viewer") once https://github.com/ProjectMirador/mirador/pull/4280 is merged.
+      container={document.querySelector(`#${containerId} .mirador-viewer`)}
       fullWidth
       maxWidth="xs"
       onClose={closeDialog}
       open={dialogOpen}
       scroll="paper"
     >
-      <DialogTitle disableTypography>
+      <DialogTitle>
         <Typography variant="h4">
           <Box fontWeight="fontWeightBold">{t("downloadOptions")}</Box>
         </Typography>
@@ -116,37 +138,6 @@ const DownloadDialog = ({
       </DialogActions>
     </Dialog>
   );
-};
-
-DownloadDialog.defaultProps = {
-  children: undefined,
-  manifestUrl: undefined,
-  seeAlso: [],
-};
-
-DownloadDialog.propTypes = {
-  canvasLabel: PropTypes.func.isRequired,
-  children: PropTypes.element,
-  config: PropTypes.shape({
-    dialogOpen: PropTypes.bool.isRequired,
-    enabled: PropTypes.bool.isRequired,
-  }).isRequired,
-  containerId: PropTypes.string.isRequired,
-  infoResponse: PropTypes.func.isRequired,
-  manifestUrl: PropTypes.string,
-  seeAlso: PropTypes.arrayOf(
-    PropTypes.shape({
-      format: PropTypes.string,
-      label: PropTypes.string,
-      value: PropTypes.string,
-    }),
-  ),
-  t: PropTypes.func.isRequired,
-  updateConfig: PropTypes.func.isRequired,
-  visibleCanvases: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, index: PropTypes.number }),
-  ).isRequired,
-  windowId: PropTypes.string.isRequired,
 };
 
 export default DownloadDialog;

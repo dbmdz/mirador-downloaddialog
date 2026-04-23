@@ -1,6 +1,6 @@
-import Mirador from "mirador/dist/es/src/index";
+import Mirador from "mirador";
 
-import downloadDialogPlugin from "../../src";
+import Plugin from ".";
 
 const config = {
   catalog: [
@@ -34,4 +34,4 @@ const config = {
   ],
 };
 
-Mirador.viewer(config, [...downloadDialogPlugin]);
+Mirador.viewer(config, [...Plugin]);
