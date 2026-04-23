@@ -63,6 +63,8 @@ const DownloadDialog = ({
     });
   return (
     <Dialog
+      // FIXME: .mirador-viewer is hardcoded because css-ns is not part of Mirador 4's public API.
+      // Replace with ns("viewer") once https://github.com/ProjectMirador/mirador/pull/4280 is merged.
       container={document.querySelector(`#${containerId} .mirador-viewer`)}
       fullWidth
       maxWidth="xs"
