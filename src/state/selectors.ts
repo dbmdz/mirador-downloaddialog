@@ -1,4 +1,5 @@
 import { getWindowConfig } from "mirador";
+import { createSelector } from "reselect";
 
 interface PluginConfig {
   dialogOpen: boolean;
@@ -13,13 +14,10 @@ const defaultConfig: PluginConfig = {
 };
 
 /** Selector to get the plugin config for a given window */
-const getPluginConfig = (
-  state: unknown,
-  ownProps: { windowId: string },
-): PluginConfig => {
-  const { downloadDialog = {} } = getWindowConfig(state, ownProps);
-  return { ...defaultConfig, ...(downloadDialog as Partial<PluginConfig>) };
-};
+const getPluginConfig = createSelector([getWindowConfig], (windowConfig) => ({
+  ...defaultConfig,
+  ...((windowConfig.downloadDialog ?? {}) as Partial<PluginConfig>),
+}));
 
 export { getPluginConfig };
 export type { PluginConfig };
