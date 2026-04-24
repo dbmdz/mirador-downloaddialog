@@ -6,9 +6,6 @@ import dts from "vite-plugin-dts";
 const buildMode = process.env.BUILD_MODE ?? "plugin";
 
 const pluginConfig: UserConfig = {
-  resolve: {
-    dedupe: ["react", "react-dom"],
-  },
   build: {
     copyPublicDir: false,
     lib: {
@@ -34,6 +31,9 @@ const pluginConfig: UserConfig = {
     react(),
     dts({ include: ["src"], exclude: "src/demo.ts", rollupTypes: true }),
   ],
+  resolve: {
+    dedupe: ["react", "react-dom"],
+  },
   server: {
     open: true,
   },
