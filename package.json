@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dbmdz/mirador-downloaddialog"
+    "url": "git+https://github.com/dbmdz/mirador-downloaddialog.git"
   },
   "license": "MIT",
   "author": "Matthias Lindinger <matthias.lindinger@bsb-muenchen.de>",
