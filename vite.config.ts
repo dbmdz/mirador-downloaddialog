@@ -6,6 +6,9 @@ import dts from "vite-plugin-dts";
 const buildMode = process.env.BUILD_MODE ?? "plugin";
 
 const pluginConfig: UserConfig = {
+  resolve: {
+    dedupe: ["react", "react-dom"],
+  },
   build: {
     copyPublicDir: false,
     lib: {
@@ -18,6 +21,7 @@ const pluginConfig: UserConfig = {
         /^@mui\/(material|system)/,
         "mirador",
         "react",
+        "react/jsx-runtime",
         "react-dom",
         "react-i18next",
       ],
