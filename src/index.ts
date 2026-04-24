@@ -11,7 +11,6 @@ import {
   updateWindow,
 } from "mirador";
 import { ComponentType } from "react";
-import { withTranslation } from "react-i18next";
 
 import DownloadButton from "./components/DownloadButton";
 import DownloadDialog from "./components/DownloadDialog";
@@ -38,7 +37,7 @@ interface MiradorPlugin {
 
 const plugins: MiradorPlugin[] = [
   {
-    component: withTranslation()(DownloadButton),
+    component: DownloadButton,
     config: {
       translations,
     },
@@ -58,7 +57,7 @@ const plugins: MiradorPlugin[] = [
     target: "WindowTopBarPluginArea",
   },
   {
-    component: withTranslation()(DownloadDialog),
+    component: DownloadDialog,
     config: {
       translations,
     },

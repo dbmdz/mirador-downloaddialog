@@ -10,9 +10,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { TFunction } from "i18next";
 import { Canvas, ImageSize, ScrollIndicatedDialogContent } from "mirador";
 import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
 
 import DownloadDialogPluginArea from "../containers/dialog/DownloadDialogPluginArea";
 import { PluginConfig } from "../state/selectors";
@@ -32,7 +32,6 @@ interface DownloadDialogProps {
   infoResponse: (canvasId: string) => { json?: { sizes?: ImageSize[] } };
   manifestUrl?: string;
   seeAlso?: SeeAlsoEntry[];
-  t: TFunction;
   updateConfig: (config: PluginConfig) => void;
   visibleCanvases: Canvas[];
   windowId: string;
@@ -46,12 +45,12 @@ const DownloadDialog = ({
   infoResponse,
   manifestUrl,
   seeAlso = [],
-  t,
   updateConfig,
   visibleCanvases,
   windowId,
 }: DownloadDialogProps) => {
   const theme = useTheme();
+  const { t } = useTranslation();
   const { dialogOpen, enabled } = config;
   if (!enabled || !dialogOpen) {
     return null;
@@ -84,7 +83,6 @@ const DownloadDialog = ({
             key={canvas.id}
             label={canvasLabel(canvas.id)}
             sizes={infoResponse(canvas.id).json?.sizes}
-            t={t}
           />
         ))}
         <DownloadDialogPluginArea windowId={windowId} />
