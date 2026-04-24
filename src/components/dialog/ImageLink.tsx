@@ -1,17 +1,17 @@
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { useTheme } from "@mui/material/styles";
-import { TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface ImageLinkProps {
   height: number;
   linkTarget: string;
-  t: TFunction;
   width: number;
 }
 
-const ImageLink = ({ height, linkTarget, t, width }: ImageLinkProps) => {
+const ImageLink = ({ height, linkTarget, width }: ImageLinkProps) => {
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <Box
       fontFamily={theme.typography.fontFamily ?? "sans-serif"}

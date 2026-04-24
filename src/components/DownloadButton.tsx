@@ -1,22 +1,21 @@
 import DownloadIcon from "@mui/icons-material/VerticalAlignBottomSharp";
-import { TFunction } from "i18next";
 import { MiradorMenuButton } from "mirador";
+import { useTranslation } from "react-i18next";
 
 import { PluginConfig } from "../state/selectors";
 
 interface DownloadButtonProps {
   config: PluginConfig;
   containerId: string;
-  t: TFunction;
   updateConfig: (config: PluginConfig) => void;
 }
 
 const DownloadButton = ({
   config,
   containerId,
-  t,
   updateConfig,
 }: DownloadButtonProps) => {
+  const { t } = useTranslation();
   const { dialogOpen, enabled } = config;
   if (!enabled) {
     return null;
