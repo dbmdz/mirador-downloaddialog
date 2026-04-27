@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## Unreleased
 
+## [1.0.1](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/1.0.1) - 2026-04-27
+
+### Fixed
+
+- Externalized `react/jsx-runtime` in Vite config
+
 ## [1.0.0](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/1.0.0) - 2026-04-23
 
 ### Added
