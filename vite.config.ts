@@ -19,6 +19,7 @@ const pluginConfig: UserConfig = {
         "mirador",
         "react",
         "react/jsx-runtime",
+        "react/jsx-dev-runtime",
         "react-dom",
         "react-i18next",
       ],
@@ -31,9 +32,6 @@ const pluginConfig: UserConfig = {
     react(),
     dts({ include: ["src"], exclude: "src/demo.ts", rollupTypes: true }),
   ],
-  resolve: {
-    dedupe: ["react", "react-dom"],
-  },
   server: {
     open: true,
   },
