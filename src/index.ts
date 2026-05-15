@@ -49,7 +49,6 @@ const plugins: MiradorPlugin[] = [
         dispatch(updateWindow(windowId, { downloadDialog })),
     }),
     mapStateToProps: (state: unknown, { windowId }: { windowId: string }) => ({
-      containerId: getConfig(state).id,
       config: getPluginConfig(state, { windowId }),
     }),
     mode: "add",

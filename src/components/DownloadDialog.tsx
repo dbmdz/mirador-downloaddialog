@@ -71,10 +71,8 @@ const DownloadDialog = ({
       open={dialogOpen}
       scroll="paper"
     >
-      <DialogTitle>
-        <Typography variant="h4">
-          <Box fontWeight="fontWeightBold">{t("downloadOptions")}</Box>
-        </Typography>
+      <DialogTitle component="h4">
+        <Box fontWeight="fontWeightBold">{t("downloadOptions")}</Box>
       </DialogTitle>
       <ScrollIndicatedDialogContent dividers>
         {visibleCanvases.map((canvas) => (
