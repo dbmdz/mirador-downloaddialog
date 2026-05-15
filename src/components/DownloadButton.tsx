@@ -10,11 +10,7 @@ interface DownloadButtonProps {
   updateConfig: (config: PluginConfig) => void;
 }
 
-const DownloadButton = ({
-  config,
-  containerId,
-  updateConfig,
-}: DownloadButtonProps) => {
+const DownloadButton = ({ config, updateConfig }: DownloadButtonProps) => {
   const { t } = useTranslation();
   const { dialogOpen, enabled } = config;
   if (!enabled) {
@@ -25,7 +21,6 @@ const DownloadButton = ({
       aria-expanded={dialogOpen}
       aria-haspopup
       aria-label={t("showDownloadOptions")}
-      containerId={containerId}
       onClick={() =>
         updateConfig({
           ...config,
