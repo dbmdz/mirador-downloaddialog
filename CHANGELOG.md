@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## Unreleased
 
+## [1.0.4](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/1.0.4) - 2026-06-03
+
+### Changed
+
+- Updated dependencies
+
 ## [1.0.3](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/1.0.3) - 2026-05-15
 
 ### Changed
