@@ -61,7 +61,6 @@ declare module "mirador" {
     badge?: boolean;
     BadgeProps?: object;
     children: ReactElement;
-    containerId?: string;
     dispatch?: () => void;
     onClick?: () => void;
     selected?: boolean;

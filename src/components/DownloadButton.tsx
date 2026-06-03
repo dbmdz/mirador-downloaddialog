@@ -6,7 +6,6 @@ import { PluginConfig } from "../state/selectors";
 
 interface DownloadButtonProps {
   config: PluginConfig;
-  containerId: string;
   updateConfig: (config: PluginConfig) => void;
 }
 
