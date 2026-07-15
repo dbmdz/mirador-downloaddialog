@@ -116,12 +116,12 @@ starting the work, so we can discuss if it's a fit.
 
 **Note**: The package requires Node.js `24` and npm >= `11`.
 
-[children]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L91
+[children]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L87
 [demo-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/demo.ts
 [mirador]: https://github.com/ProjectMirador/mirador/releases/tag/v4.0.0
 [mirador-badge]: https://img.shields.io/badge/Mirador-4.x-blueviolet
 [npm]: https://www.npmjs.org/package/mirador-downloaddialog
 [npm-badge]: https://img.shields.io/npm/v/mirador-downloaddialog.png?style=flat-square
-[plugin-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/index.ts#L39
-[plugin-hook]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L90
+[plugin-cfg]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/index.ts#L58-L84
+[plugin-hook]: https://github.com/dbmdz/mirador-downloaddialog/blob/main/src/components/DownloadDialog.tsx#L86
 [screenshot]: .docassets/screenshot.png
