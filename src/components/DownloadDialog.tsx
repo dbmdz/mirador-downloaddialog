@@ -10,7 +10,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { Canvas, ImageSize, ScrollIndicatedDialogContent } from "mirador";
+import {
+  Canvas,
+  cssNs,
+  ImageSize,
+  ScrollIndicatedDialogContent,
+} from "mirador";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -62,9 +67,7 @@ const DownloadDialog = ({
     });
   return (
     <Dialog
-      // FIXME: .mirador-viewer is hardcoded because css-ns is not part of Mirador 4's public API.
-      // Replace with ns("viewer") once https://github.com/ProjectMirador/mirador/pull/4280 is merged.
-      container={document.querySelector(`#${containerId} .mirador-viewer`)}
+      container={document.querySelector(`#${containerId} .${cssNs("viewer")}`)}
       fullWidth
       maxWidth="xs"
       onClose={closeDialog}

@@ -88,4 +88,6 @@ declare module "mirador" {
     config: Record<string, unknown>,
     plugins?: unknown[],
   ): void;
+
+  export function cssNs(className: string): string;
 }
