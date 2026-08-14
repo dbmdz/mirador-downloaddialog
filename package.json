@@ -23,14 +23,14 @@
   "scripts": {
     "build": "npm run build:demo && npm run build:plugin",
     "prebuild:demo": "rimraf demo/dist",
-    "build:demo": "tsc && vite build --config vite.config.demo.mjs",
+    "build:demo": "tsc && vite build --config vite.config.demo.mts",
     "prebuild:plugin": "rimraf dist",
     "build:plugin": "tsc && vite build",
     "format": "eslint . --ext js,jsx,ts,tsx --fix --max-warnings 0 --report-unused-disable-directives",
     "lint": "eslint . --ext js,jsx,ts,tsx --max-warnings 0 --report-unused-disable-directives",
     "prepublishOnly": "npm run build",
     "prepreview": "npm run build:demo",
-    "preview": "vite preview --config vite.config.demo.mjs",
+    "preview": "vite preview --config vite.config.demo.mts",
     "start": "vite"
   },
   "devDependencies": {
