@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## Unreleased
 
+### Fixed
+
+- Added missing `targetName` prop for `PluginHook`
+
 ## [1.0.8](https://github.com/dbmdz/mirador-downloaddialog/releases/tag/1.0.8) - 2026-08-14
 
 Release of `1.0.7` did not work.
