@@ -64,7 +64,7 @@ export default defineConfig([
   globalIgnores([
     "**/dist",
     "**/eslint.config.mjs",
-    "**/vite.config.ts",
+    "**/vite.config.*",
     "**/vite-env.d.ts",
   ]),
 ]);
