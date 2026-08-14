@@ -1,15 +1,13 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { defineConfig, UserConfig } from "vite";
+import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
-const buildMode = process.env.BUILD_MODE ?? "plugin";
-
-const pluginConfig: UserConfig = {
+export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["es"],
     },
     rollupOptions: {
@@ -35,21 +33,4 @@ const pluginConfig: UserConfig = {
   server: {
     open: true,
   },
-};
-
-const demoConfig: UserConfig = {
-  build: {
-    outDir: resolve(__dirname, "demo/dist"),
-    rollupOptions: {
-      input: {
-        demo: resolve(__dirname, "index.html"),
-      },
-    },
-  },
-  plugins: [react()],
-  server: {
-    open: true,
-  },
-};
-
-export default defineConfig(buildMode !== "demo" ? pluginConfig : demoConfig);
+});
